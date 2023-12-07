@@ -1,7 +1,7 @@
 const Job = require('../models/job');
 const Comment = require('../models/comment');
-const Like = require('../models/like');
-const Share = require('../models/share');
+const Like = require('../models/job');
+const Share = require('../models/job');
 
 const jobsController = {
   index: async (req, res) => {
@@ -63,5 +63,5 @@ const jobsController = {
   }
 };
 
-module.exports = jobsController;
+
 

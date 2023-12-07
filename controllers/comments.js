@@ -5,7 +5,7 @@ module.exports = {
 };
 
 async function create(req, res) {
-  const job= await job.findById(req.params.id);
+  const job= await Job.findById(req.params.id);
 
    // Add the user-centric info to req.body (the new review)
    req.body.user = req.user._id;

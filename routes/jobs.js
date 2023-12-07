@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Job = require('../models/job');
 const Comment = require('../models/comment');
-const Like = require('../models/like');
-const Share = require('../models/share');
+const Like = require('../models/job');
+const Share = require('../models/job');
 
 // Route to render job listings
 router.get('/jobs', async (req, res) => {
