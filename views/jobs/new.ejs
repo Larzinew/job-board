@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/jobs" method="POST">
+  <label> Job Title:</label>
+  <input type="text" name="title">
+  <label>Job Description:</label>
+  <input type="text" name="Description">
+  <label>Company:</label>
+  <input type="text" name="Company">
+  <label>Location:</label>
+  <input type="text" name="Location">
+</select>
+  <input type="submit" value="Add Job">
+</form>
+
+<%- include('../partials/footer') %>

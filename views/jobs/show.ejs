@@ -1,0 +1,49 @@
+<%- include('../partials/header') %>
+
+<section id="show-page">
+  <div>Title: </div>
+  <div><%= job.title %></div>
+  <div>Description: </div>
+  <div><%= job.description%></div>
+  <div>Company: </div>
+  <div><%= job.company%></div>
+  <div>Location </div>
+  <div><%= job.location%></div>
+ 
+
+</section>
+
+<br><br><h2>Comments</h2>
+<form id="add-comment-form" method="POST"
+  action="/jobs/<%= job._id %>/comments">
+  <label>Review:</label>
+  <textarea name="content"></textarea>
+  </select>
+  <input type="submit" value="Add Review">
+</form>
+
+<% if (job.comments.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Company</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% job.comments.forEach(function(c) { %>
+        <tr>
+          <!-- .toLocaleDateString() provides a more friendly date format -->
+          <td><%= c.createdAt.toLocaleDateString() %></td>
+          <td><%= c.content %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <h5>No Comments Yet</h5>
+<% } %>
+  
+<%- include('../partials/footer') %>
