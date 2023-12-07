@@ -1,35 +1,67 @@
-const Jobs = require('../models/jobs');
+const Job = require('../models/job');
+const Comment = require('../models/comment');
+const Like = require('../models/like');
+const Share = require('../models/share');
 
-module.exports = {
-    index,
-    show,
-    new: newJob,
-    create
-  };
-  
-  async function index(req, res) {
-    const jobs = await Jobs.find({});
-    res.render('jobs/index', { title: 'Jobs', jobs });
-  }
-  
-  async function show(req, res) {
-    const job = await job.findById(req.params.id);
-    res.render('jobs/show', { title: 'Job Detail', job });
-  }
-  
-  function newJob(req, res) {
-    // We'll want to be able to render an  
-    // errorMsg if the create action fails
-    res.render('jobs/new', { title: 'Add Job', errorMsg: '' });
-  }
-  
-  async function create(req, res) {
+const jobsController = {
+  index: async (req, res) => {
     try {
-      const job = await Jobs.create(req.body);
-      console.log(job);
-      res.redirect(`/jobs/${job._id}`);
-    } catch(err) {
-      console.log(err);
-      res.render('jobs/new', { errorMsg: err.message });
+      const jobs = await Job.find();
+      res.render('jobs/index', { jobs });
+    } catch (error) {
+      res.render('error', { error });
+    }
+  },
+
+  show: async (req, res) => {
+    try {
+      const job = await Job.findById(req.params.id);
+      const comments = await Comment.find({ job: req.params.id });
+      const likes = await Like.find({ job: req.params.id });
+      const shares = await Share.find({ job: req.params.id });
+      
+      res.render('jobs/show', { job, comments, likes, shares });
+    } catch (error) {
+      res.render('error', { error });
+    }
+  },
+
+  create: async (req, res) => {
+    try {
+      const newJob = await Job.create(req.body);
+      res.redirect(`/jobs/${newJob._id}`);
+    } catch (error) {
+      res.render('error', { error });
+    }
+  },
+
+  addComment: async (req, res) => {
+    try {
+      const newComment = await Comment.create(req.body);
+      res.redirect(`/jobs/${req.params.id}`);
+    } catch (error) {
+      res.render('error', { error });
+    }
+  },
+
+  addLike: async (req, res) => {
+    try {
+      const newLike = await Like.create(req.body);
+      res.redirect(`/jobs/${req.params.id}`);
+    } catch (error) {
+      res.render('error', { error });
+    }
+  },
+
+  share: async (req, res) => {
+    try {
+      const newShare = await Share.create(req.body);
+      res.redirect(`/jobs/${req.params.id}`);
+    } catch (error) {
+      res.render('error', { error });
     }
   }
+};
+
+module.exports = jobsController;
+

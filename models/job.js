@@ -19,25 +19,24 @@ const jobSchema = new Schema({
     required: true,
     min: 10,
     max: 9999
-   },
-      timestamps: true
+   }, 
+   
+   });
 
-//   postDate: {
-//     type: Date,
-//    default: function () {
-//     const today = new Date();
-//     const year = today.getFullYear();
-//     const month = today.getMonth();
-//     const day = today.getDate();
-//     const finalDate = new Date(year, month, day + 365);
-//     return finalDate;
-//    }
-// },
-
-// comments:[commentSchema],
+   const commentSchema = new Schema({
+      user: {
+         type: Schema.Types.ObjectId,
+         ref: 'User',
+         required: true
+       },
+       userName: String,
+       userAvatar: String
+     }, {
+       timestamps: true
+     });   
 
 
-})
+comments:[commentSchema],
 
 
 module.exports = mongoose.model('job', jobSchema);
