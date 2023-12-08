@@ -9,13 +9,13 @@
 </head>
 <body>
   <nav>
-    <a href="/jobs/new" <%- title === 'Add Job' ? 'class="active"' : '' %>>ADD ROLE</a>
+    <a href="/jobs/new">ADD ROLE</a>
+    <a href="/jobs" >ALL OPEN ROLES</a>
     <% if (user) { %>
-    <a href="/jobs" <%- title === 'All Jobs' ? 'class="active"' : '' %>>ALL OPEN ROLES</a>
     <a href="/logout">LOG OUT</a>
     <% } else { %>
       <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
     <% } %>
   </nav>
   <main>
-    <h1><%= title %></h1>
+   

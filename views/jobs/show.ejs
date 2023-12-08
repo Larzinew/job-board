@@ -1,49 +1,31 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-  <div>Title: </div>
-  <div><%= job.title %></div>
-  <div>Description: </div>
-  <div><%= job.description%></div>
-  <div>Company: </div>
-  <div><%= job.company%></div>
-  <div>Location </div>
-  <div><%= job.location%></div>
- 
-
+  <h1><%= job.jobTitle %></h1>
+  <p><strong>Company:</strong> <%= job.company %></p>
+  <p><strong>Location:</strong> <%= job.location %></p>
+  <p><strong>Description:</strong> <%= job.description %></p>
+  <p><strong>Requirements:</strong> <%= job.requirements %></p>
+  <% if (job.salary) { %>
+    <p><strong>Salary:</strong> <%= job.salary %></p>
+  <% } %>
+  <% if (job.applyLink) { %>
+    <p><strong>Apply:</strong> <a href="<%= job.applyLink %>"><%= job.applyLink %></a></p>
+  <% } %>
+  <p><strong>Posted At:</strong> <%= job.postedAt.toDateString() %></p>
 </section>
+
 
 <br><br><h2>Comments</h2>
 <form id="add-comment-form" method="POST"
-  action="/jobs/<%= job._id %>/comments">
+  action="">
   <label>Review:</label>
   <textarea name="content"></textarea>
   </select>
-  <input type="submit" value="Add Review">
+  <input type="submit" value="Add Comments">
 </form>
 
-<% if (job.comments.length) { %>
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Company</th>
-        <th>Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% job.comments.forEach(function(c) { %>
-        <tr>
-          <!-- .toLocaleDateString() provides a more friendly date format -->
-          <td><%= c.createdAt.toLocaleDateString() %></td>
-          <td><%= c.content %></td>
-        </tr>
-      <% }); %>
-    </tbody>
-  </table>
-<% } else { %>
   <h5>No Comments Yet</h5>
-<% } %>
+
   
 <%- include('../partials/footer') %>

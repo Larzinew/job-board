@@ -4,18 +4,26 @@
   <thead>
     <tr>
         <th>Title</th>
-        <th>Description</th>
         <th>Company</th>
         <th>Location</th>
+        <th>Description</th>
+        <th>Requirements</th>
+        <th>Salary</th>
+        <th>Apply Link</th>
+        <th>Posted At</th>
     </tr>
   </thead>
   <tbody>
     <% jobs.forEach(function(job) { %>
       <tr>
-        <td><%= job.title %></td>
-        <td><%= job.description% %></td>
-        <td><%= job.company%% %></td>
-        <td><%= job.location%% %></td>
+        <td><%= job.jobTitle %></td>
+        <td><%= job.company %></td>
+        <td><%= job.location %></td>
+        <td><%= job.description %></td>
+        <td><%= job.requirements %></td>
+        <td><%= job.salary %></td>
+        <td><%= job.applyLink%></td>
+        <td><%= job.postedAt %></td>
         <td><a href="/jobs/<%= job._id %>">DETAILS</a></td>
       </tr>
       <% }); %>
