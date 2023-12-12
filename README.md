@@ -47,7 +47,10 @@ Install dependencies:
 
 **Ice Box**
 - users can like 
-- users share via email or social media, 
+- users share via email or social media,
+- the collapsable comments section
+- single card design
+- pagination
 - Add a WSMIJIG markdown ( I didn't spell that right) 
 - Authenticate with Facebook, LinkedIn, and GitHub 
 - Email and mobile notifications 
