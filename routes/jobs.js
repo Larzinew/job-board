@@ -12,5 +12,21 @@ router.get('/new', jobsCtrl.new);
 router.get('/:id', jobsCtrl.show);
 // // POST jobs
 router.post('/', jobsCtrl.create);
+// // DELETE /jobs/:id (delete functionality)
+router.delete('/:id', jobsCtrl.delete);
+// Update /posts/:id (update functionality)
+router.put('/:id', jobsCtrl.update);
+// Edit /jobs/:id/edit
+router.get('/:id/edit', jobsCtrl.edit);
+
+// // Routes for liking and sharing
+// router.post('/:id/like', jobsCtrl.likeJob);
+// router.post('/:id/share', jobsCtrl.shareJob);
+
+// // GET /jobs/:id/edit (edit functionality)
+// router.get('/:id/edit', jobsCtrl.edit);
+// // PUT /jobs/:id (update functionality)
+// router.put('/:id', jobsCtrl.update);
+
   
 module.exports = router;

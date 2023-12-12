@@ -1,33 +1,58 @@
 <%- include('../partials/header') %>
 
-<table id="list">
-  <thead>
-    <tr>
-        <th>Title</th>
-        <th>Company</th>
-        <th>Location</th>
-        <th>Description</th>
-        <th>Requirements</th>
-        <th>Salary</th>
-        <th>Apply Link</th>
-        <th>Posted At</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% jobs.forEach(function(job) { %>
+<div class="container">
+  <h1>Job Listings</h1>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= job.jobTitle %></td>
-        <td><%= job.company %></td>
-        <td><%= job.location %></td>
-        <td><%= job.description %></td>
-        <td><%= job.requirements %></td>
-        <td><%= job.salary %></td>
-        <td><%= job.applyLink%></td>
-        <td><%= job.postedAt %></td>
-        <td><a href="/jobs/<%= job._id %>">DETAILS</a></td>
+        <th scope="col">Title</th>
+        <th scope="col">Company</th>
+        <th scope="col">Location</th>
+        <th scope="col">Description</th>
+        <th scope="col">Requirements</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Apply Link</th>
+        <th scope="col">Posted At</th>
+        <th scope="col">Actions</th>
       </tr>
+    </thead>
+    <tbody>
+      <% jobs.forEach(function(job) { %>
+        <tr>
+          <td><%= job.jobTitle %></td>
+          <td><%= job.company %></td>
+          <td><%= job.location %></td>
+          <td><%= job.description %></td>
+          <td><%= job.requirements %></td>
+          <td><%= job.salary %></td>
+          <td><%= job.applyLink %></td>
+          <td><%= job.postedAt %></td>
+          <td>
+            <!-- Delete Button -->
+            <form action="/jobs/<%= job._id %>?_method=DELETE" method="POST" style="display: inline;">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+            <!-- Edit Button -->
+            <a href="/jobs/<%= job._id %>/edit" class="btn btn-primary">Edit</a>
+            <!-- Details Button -->
+            <a href="/jobs/<%= job._id %>" class="btn btn-info">Details</a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="9">
+            <!-- Comments Section -->
+            <div>
+              <h5>Comments</h5>
+              <% job.comments.forEach(function(comment) { %>
+                <p><%= comment.text %></p>
+              <% }) %>
+            </div>
+          </td>
+        </tr>
       <% }); %>
     </tbody>
   </table>
-  
+</div>
+
 <%- include('../partials/footer') %>

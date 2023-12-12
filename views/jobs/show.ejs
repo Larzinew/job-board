@@ -1,31 +1,36 @@
 <%- include('../partials/header') %>
 
-<section id="show-page">
-  <h1><%= job.jobTitle %></h1>
-  <p><strong>Company:</strong> <%= job.company %></p>
-  <p><strong>Location:</strong> <%= job.location %></p>
-  <p><strong>Description:</strong> <%= job.description %></p>
-  <p><strong>Requirements:</strong> <%= job.requirements %></p>
-  <% if (job.salary) { %>
-    <p><strong>Salary:</strong> <%= job.salary %></p>
-  <% } %>
-  <% if (job.applyLink) { %>
-    <p><strong>Apply:</strong> <a href="<%= job.applyLink %>"><%= job.applyLink %></a></p>
-  <% } %>
-  <p><strong>Posted At:</strong> <%= job.postedAt.toDateString() %></p>
+<section id="show-page" class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h1><%= job.jobTitle %></h1>
+      <p><strong>Company:</strong> <%= job.company %></p>
+      <p><strong>Location:</strong> <%= job.location %></p>
+      <p><strong>Description:</strong> <%= job.description %></p>
+      <p><strong>Requirements:</strong> <%= job.requirements %></p>
+      <% if (job.salary) { %>
+        <p><strong>Salary:</strong> <%= job.salary %></p>
+      <% } %>
+      <% if (job.applyLink) { %>
+        <p><strong>Apply:</strong> <a href="<%= job.applyLink %>"><%= job.applyLink %></a></p>
+      <% } %>
+      <p><strong>Update</strong><%= job.edit %></p>
+      <p><strong>Posted At:</strong> <%= job.postedAt.toDateString() %></p>
+    </div>
+  </div>
 </section>
 
+<br><br>
+<div class="container mt-4">
+  <h2>Comments</h2>
+  <form id="add-comment-form" method="POST" action="">
+    <div class="form-group">
+      <label for="commentText">Comments:</label>
+      <textarea class="form-control" id="commentText" name="text"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Comments</button>
+  </form>
+  <h5 class="mt-4">No Comments Yet</h5>
+</div>
 
-<br><br><h2>Comments</h2>
-<form id="add-comment-form" method="POST"
-  action="">
-  <label>Review:</label>
-  <textarea name="content"></textarea>
-  </select>
-  <input type="submit" value="Add Comments">
-</form>
-
-  <h5>No Comments Yet</h5>
-
-  
 <%- include('../partials/footer') %>

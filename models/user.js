@@ -9,8 +9,12 @@ const mongoose = require('mongoose');
     },
     email: String,
     avatar: String
-  }, {
-    timestamps: true
+  // }, 
+  // jobsLiked: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'Job',
+  // }, {
+  //   timestamps: true
   });
 
  module.exports = mongoose.model('User', userSchema);

@@ -5,16 +5,18 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
+const methodOverride = require('method-override');
 
 require('dotenv').config();
 // connect to the database with AFTER the config vars are processed
 require('./config/database');
 require('./config/passport');
 
+
 var indexRouter = require('./routes/index');
 var jobsRouter = require('./routes/jobs');
-
 var app = express();
+var commentsRouter = require('./routes/comments');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,11 +39,12 @@ app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
-
+app.use(methodOverride('_method'));
 
 
 app.use('/', indexRouter);
 app.use('/jobs', jobsRouter);
+app.use('/', commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

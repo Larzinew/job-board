@@ -4,18 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <title><%= title %></title>
+  <title></title>
 </head>
 <body>
-  <nav>
-    <a href="/jobs/new">ADD ROLE</a>
-    <a href="/jobs" >ALL OPEN ROLES</a>
-    <% if (user) { %>
-    <a href="/logout">LOG OUT</a>
-    <% } else { %>
-      <a href="/auth/google" class="login">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
-    <% } %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Grab a Job</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/jobs/new">ADD ROLE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/jobs">ALL OPEN ROLES</a>
+        </li>
+      </ul>
+      <% if (user) { %>
+        <a href="/logout" class="btn btn-outline-danger my-2 my-sm-0">LOG OUT</a>
+      <% } else { %>
+        <a href="/auth/google" class="btn btn-outline-primary my-2 my-sm-0">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png" alt="Google"></a>
+      <% } %>
+    </div>
   </nav>
-  <main>
-   
+  <main class="container mt-4">
+    <!-- Your content goes here -->
+  </main>
+  
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

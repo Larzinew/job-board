@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+
+<h1>Edit Role</h1>
+<div class="table-responsive">
+  <form action="/jobs/<%= job._id %>?_method=PUT" method="POST">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Job Title</th>
+          <td><input type="text" id="jobTitle" name="jobTitle" value="<%= job.jobTitle %>" class="form-control"></td>
+        </tr>
+        <tr>
+          <th scope="row">Company</th>
+          <td><input type="text" id="company" name="company" value="<%= job.company %>" class="form-control"></td>
+        </tr>
+        <tr>
+          <th scope="row">Location</th>
+          <td><input type="text" id="location" name="location" value="<%= job.location %>" class="form-control"></td>
+        </tr>
+        <tr>
+          <th scope="row">Description</th>
+          <td><textarea id="description" name="description" rows="4" cols="50" class="form-control"><%= job.description %></textarea></td>
+        </tr>
+        <tr>
+          <th scope="row">Requirements</th>
+          <td><textarea id="requirements" name="requirements" rows="4" cols="50" class="form-control"><%= job.requirements %></textarea></td>
+        </tr>
+        <tr>
+          <th scope="row">Salary</th>
+          <td>
+            <select name="salary" id="salary" class="form-select">
+              <option value="">Select Salary Range</option>
+              <% const salaryRanges = ['0 - 20k', '20k - 40k', '40k - 60k', '60k - 80k', '80k - 100k', '100k - 120k', '120k -140k','140k - 160k','160k - 180k', '200k+']; %>
+              <% salaryRanges.forEach((range) => { %>
+                <option value="<%= range %>" <%= job.salary === range ? 'selected' : '' %>><%= range %></option>
+              <% }); %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Apply Link</th>
+          <td><input type="text" id="applyLink" name="applyLink" value="<%= job.applyLink %>" class="form-control"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">EDIT</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
+

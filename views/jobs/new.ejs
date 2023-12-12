@@ -1,46 +1,50 @@
 <%- include('../partials/header') %>
 
 <h1>Add A Role</h1>
-<form action="/jobs" method="POST">
-  <label for="jobTitle">Job Title:</label>
-  <input type="text" id="jobTitle" name="jobTitle" required>
-  <br>
-
-  <label for="company">Company:</label>
-  <input type="text" id="company" name="company" required>
-  <br>
-
-  <label for="location">Location:</label>
-  <input type="text" id="location" name="location" required>
-  <br>
-
-  <label for="description">Description:</label>
-  <textarea id="description" name="description" rows="4" cols="50" required></textarea>
-  <br>
-
-  <label for="requirements">Requirements:</label>
-  <textarea id="requirements" name="requirements" rows="4" cols="50" required></textarea>
-  <br>
-
-  <label for="salary">Salary:</label>
-<select name="salary" id="salary">
-  <option value="">Select Salary Range</option>
-  <% const salaryRanges = ['0 - 20k', '20k - 40k', '40k - 60k', '60k - 80k', '80k - 100k', '100k - 120k', '120k -140k','140k - 160k','160k - 180k', '200k+']; %>
-  <% salaryRanges.forEach((range) => { %>
-    <option value="<%= range %>"><%= range %></option>
-  <% }); %>
-</select>
-  <br>
-
-  <label for="applyLink">Apply Link:</label>
-  <input type="text" id="applyLink" name="applyLink" required>
-  
-  <!-- Using the link() function -->
-  <% function link(str) { %>
-    <a href="<%= str %>"><%= str %></a>
-  <% } %>
-  
-  <input type="submit" value="Post Job">
-</form>
+<div class="table-responsive">
+  <form action="/jobs" method="POST">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="row">Job Title</th>
+          <td><input type="text" id="jobTitle" name="jobTitle" required class="form-control"></td>
+        </tr>
+        <tr>
+          <th scope="row">Company</th>
+          <td><input type="text" id="company" name="company" required class="form-control"></td>
+        </tr>
+        <tr>
+          <th scope="row">Location</th>
+          <td><input type="text" id="location" name="location" required class="form-control"></td>
+        </tr>
+        <tr>
+          <th scope="row">Description</th>
+          <td><textarea id="description" name="description" rows="4" cols="50" required class="form-control"></textarea></td>
+        </tr>
+        <tr>
+          <th scope="row">Requirements</th>
+          <td><textarea id="requirements" name="requirements" rows="4" cols="50" required class="form-control"></textarea></td>
+        </tr>
+        <tr>
+          <th scope="row">Salary</th>
+          <td>
+            <select name="salary" id="salary" class="form-select">
+              <option value="">Select Salary Range</option>
+              <% const salaryRanges = ['0 - 20k', '20k - 40k', '40k - 60k', '60k - 80k', '80k - 100k', '100k - 120k', '120k -140k','140k - 160k','160k - 180k', '200k+']; %>
+              <% salaryRanges.forEach((range) => { %>
+                <option value="<%= range %>"><%= range %></option>
+              <% }); %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Apply Link</th>
+          <td><input type="text" id="applyLink" name="applyLink" required class="form-control"></td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">SUBMIT</button>
+  </form>
+</div>
 
 <%- include('../partials/footer') %>
