@@ -48,7 +48,7 @@ Install dependencies:
 **Ice Box**
 - users can like 
 - users share via email or social media, 
-- Mobile Friendly 
+- Add a WSMIJIG markdown ( I didn't spell that right) 
 - Authenticate with Facebook, LinkedIn, and GitHub 
 - Email and mobile notifications 
 
